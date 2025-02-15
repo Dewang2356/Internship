@@ -5,11 +5,12 @@
 :root {
 	--pseudo-top: 0;
 	--pseudo-bar: block;
+	--pseudo-close:none;
+	--pseudo-close-flex:none;
 }
 
 html {
 	scroll-behavior: smooth !important;
-	/*	 overflow-x: hidden;*/
 	transition: 0.3s;
 
 }
@@ -51,7 +52,6 @@ body {
 	justify-content: space-around;
 	align-items: center;
 	padding: 0.3rem 0 0.3rem 0;
-	/*	position: fixed;*/
 	top: 0px;
 	position: fixed;
 	left: 50%;
@@ -143,6 +143,8 @@ body {
 	align-items: center;
 	color: #ffF;
 	cursor: pointer;
+	position: relative;
+	overflow: hidden;
 }
 
 .button i {
@@ -158,7 +160,6 @@ body {
 }
 
 .btn {
-	/*	padding: 10px 10px 10px 10px;*/
 	width: 120px;
 	height: 35px;
 	border-radius: 50px;
@@ -253,9 +254,6 @@ body {
 	font-size: 25px;
 }
 
-/*.parent{
-	position: relative;
-}*/
 .parallx {
 	position: relative;
 	width: 100%;
@@ -264,12 +262,7 @@ body {
 }
 
 .call {
-	/*	 position: absolute;
-  top: 50%;
-
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);*/
+	
 
 	color: #fff;
 	display: flex;
@@ -333,7 +326,6 @@ body {
 }
 
 .ic {
-	/*	align-self: flex-start;*/
 	margin-right: 20px;
 }
 
@@ -342,7 +334,6 @@ body {
 }
 
 .ic i {
-	/*	font-size: 3rem;*/
 	color: #009961;
 }
 
@@ -358,8 +349,6 @@ body {
 .flex {
 	display: flex;
 	justify-content: space-between;
-	/*	justify-content: center;
-	align-items: center;*/
 }
 
 .brands {
@@ -534,7 +523,6 @@ body {
 }
 
 .pricingCard p {
-	/*	margin: 0px 0 20px 0;*/
 	margin: 0;
 	padding: 0;
 }
@@ -727,12 +715,10 @@ body {
 	width: 70%;
 	display: grid;
 	grid-template-columns: 2, 1fr;
-	/*	column-gap: 20px;*/
 
 }
 
 .flexInput {
-	/*	display: flex;*/
 	display: grid;
 	grid-template-columns: auto auto;
 	width: 100%;
@@ -746,10 +732,6 @@ body {
 
 .inputs input:nth-child(1) {
 	width: auto;
-}
-
-.inputs input:nth-child(2) {
-	/*	width: 5%;*/
 }
 
 .inputs textarea {
@@ -1148,7 +1130,6 @@ p {
 
 }
 
-.about {}
 
 .fix:before {
 
@@ -1269,11 +1250,13 @@ a {
 	color: #fff;
 	border: 1px solid #009961;
 
-
+position: relative;
 	box-shadow: 0 0 0 0 rgba(0, 153, 97, 0.4);
 	-moz-animation: pulse 2s infinite;
 	-webkit-animation: pulse 2s infinite;
 	animation: pulse 2s infinite;
+	cursor: pointer;
+	z-index: 100;
 }
 
 @keyframes pulse {
@@ -1305,4 +1288,106 @@ a {
 	top: var(--pseudo-top);
 	left: 0;
 	width: 100%;
+}
+.video{
+	 display: var(--pseudo-close-flex);
+	 justify-content: center;
+	 align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: 0.3s;
+
+  z-index: 200;
+}
+.video::before{
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	background: #000;
+	z-index: 999999999999999;
+	opacity: 0.9;
+	z-index: -1;
+	display: var(--pseudo-close);
+}
+
+
+
+.ytVideo{
+display: var(--pseudo-close);
+
+
+}
+
+.vClose{
+	color: #fff;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	z-index: 9999;
+	cursor: pointer;
+	display: var(--pseudo-close);
+}
+.vLoader{
+	position: absolute;
+  top: 50%; right: 50%;
+  transform: translate(50%,-50%);
+	z-index: 9999999;
+	color: #fff;
+	
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+	display: none;
+
+
+}
+.vLoader i{
+	animation:rotate 1s infinite;
+}
+
+@keyframes rotate{
+	0%{
+		transform: rotate(90deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+.iconHide{
+	font-size: 30px;
+
+	position: absolute;
+  top: 50%; right: 50%;
+  transform: translate(50%,-50%) scale(0);
+/*  transition: 1s;*/
+}
+.button:hover .iconHide{
+	animation: 0.4s iconHideAnim;
+}
+@keyframes iconHideAnim{
+	0%{
+		transform: translate(50%,-50%) scale(2);
+		opacity: 1;
+	}
+	25%{
+transform: translate(50%,-50%) scale(4);
+opacity: 0.8;
+	}
+	50%{
+transform: translate(50%,-50%) scale(6);
+opacity: 0.6;
+	}
+	75%{
+transform: translate(50%,-50%) scale(8);
+opacity: 0.4;
+	}
+	100%{
+		transform: translate(50%,-50%) scale(10);
+		opacity: 0.2;
+/*		display: none;*/
+	}
 }
